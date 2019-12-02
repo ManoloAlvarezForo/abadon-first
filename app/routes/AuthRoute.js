@@ -11,15 +11,18 @@ const AuthRoute = ({
   ...rest
 }) => {
   const token = localStorage.getItem(AUTH_TOKEN);
+
   const preValidation = (isAuth, props) => {
     if (!Component || !CustomContainer) {
       return <Redirect to="/" />;
     }
     if (isAuth === true) {
+      // eslint-disable jsx-props-no-spreading
       return <CustomContainer {...props} body={Component} />;
     }
     return <Redirect to="/access" />;
   };
+
   return token ? (
     <Query
       query={IS_VALID_TOKEN}
@@ -32,6 +35,7 @@ const AuthRoute = ({
         if (error) return `Error to verify token!: ${error}`;
         const isAuth = data.isValidToken.isValid;
         return (
+          // eslint-disable jsx-props-no-spreading
           <Route {...rest} render={props => preValidation(isAuth, props)} />
         );
       }}

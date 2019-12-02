@@ -33,17 +33,16 @@ const DrawerList = ({
     if (action) {
       action();
     } else {
-      const { path } = option;
+      const { path, name } = option;
       setSelectedItem(path);
-      history.push(option.path);
-      changeTitle(option.name);
+      history.push(path);
+      changeTitle(name);
     }
   };
 
   return (
     <List>
       <UserProfileItem
-        name="Manolo Alvarez"
         selectedItem={selectedItem}
         handleListItemClick={handleListItemClick}
       />

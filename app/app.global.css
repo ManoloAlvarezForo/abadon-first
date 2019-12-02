@@ -6,6 +6,27 @@
 }
 
 @font-face {
+  font-family: 'Gruppo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../public/fonts/Gruppo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'TurretRoad Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../public/fonts/TurretRoad-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Light';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../public/fonts/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Nunito Black';
   font-style: normal;
   font-weight: 400;
@@ -144,7 +165,7 @@ body {
 
 /* Let's get this party started */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 /* Track */
@@ -157,8 +178,8 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  /* -webkit-border-radius: 10px;
-  border-radius: 10px; */
+  /* -webkit-border-radius: 10px; */
+  border-radius: 5px;
   background: #9e9e9e;
   -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
 }
@@ -298,10 +319,10 @@ body {
 }
 
 .auth-form-container {
-  /* background-color: #414755; */
+  /* background-color: #cecece; */
   background-color: none;
-  border: 1px solid #616161;
-  border-radius: 15px;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   align-self: center;
   display: flex;

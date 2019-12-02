@@ -8,32 +8,31 @@ import MiniDrawer from './MiniDrawer';
 const styles = () => ({
   root: {
     display: 'flex',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   mainContent: {
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
     height: '100vh',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   content: {
     flexGrow: 1,
-    backgroundColor: '#555d6f',
+    backgroundColor: '#e0e0e0',
     // padding: '0 24px',
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   beforeRoot: {
     width: '100%',
     height: '100%',
-    overflow: 'hidden',
-  },
+    overflow: 'hidden'
+  }
 });
 
 class DrawerWrapper extends React.Component {
   render() {
-    const { classes } = this.props;
-    const { body: Body } = this.props;
+    const { classes, body: Body } = this.props;
 
     return (
       <div className={[classes.beforeRoot, 'app-wrapper-web'].join(' ')}>
@@ -53,11 +52,11 @@ class DrawerWrapper extends React.Component {
 
 DrawerWrapper.propTypes = {
   classes: PropTypes.instanceOf(Object).isRequired,
-  body: PropTypes.instanceOf(Object),
+  body: PropTypes.instanceOf(Object)
 };
 
 DrawerWrapper.defaultProps = {
-  body: {},
+  body: {}
 };
 
 export default withRouter(

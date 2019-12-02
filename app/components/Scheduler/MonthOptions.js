@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const MonthOptions = ({ label, previous, next }) => {
   return (
-    <React.Fragment>
+    <>
       <div
         style={{
           display: 'flex',
@@ -48,7 +48,7 @@ const MonthOptions = ({ label, previous, next }) => {
           </IconButton>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

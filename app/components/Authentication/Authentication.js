@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Mutation } from 'react-apollo';
+import { useMutation } from '@apollo/react-hooks';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { FiLock, FiMail } from 'react-icons/fi';
 import { Typography } from '@material-ui/core';
 import { IoIosCube } from 'react-icons/io';
+import LogoIcon from '../../icons/logoIcon';
 import { APP_NAME_FULL } from '../../constants/constants';
 import { LOGIN_MUTATION } from './AuthenticationMutations';
-import { AUTH_TOKEN } from '../../constants/communication';
+import saveUserData from '../../utils/userManager/user';
 
 /**
  * Authentication Component that's contains Login.
@@ -19,24 +20,22 @@ const Authentication = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  /**
-   * Confirms authentication.
-   *
-   * @param {Object} data Object that contains login.
-   */
-  const confirm = async data => {
-    const { token } = data.login;
-    saveUserData(token);
-    history.push('/');
-  };
+  // Graphql LOGIN mutation
+  const [login] = useMutation(LOGIN_MUTATION, {
+    variables: { email, password },
+    onCompleted: data => {
+      confirm(data);
+    }
+  });
 
   /**
-   * Saves the authentication token in the localstorage.
+   * Confirms and storage the user authentication.
    *
-   * @param {String} token Authentication Token
+   * @param {Object} data Object that represent the user information.
    */
-  const saveUserData = token => {
-    localStorage.setItem(AUTH_TOKEN, token);
+  const confirm = data => {
+    saveUserData(data);
+    history.push('/');
   };
 
   return (
@@ -44,20 +43,15 @@ const Authentication = ({ history }) => {
       <div className="title-logo" style={{ width: '50%' }}>
         <Typography
           style={styles.brandLabel}
-          component="h4"
-          variant="h4"
+          component="h2"
+          variant="h2"
           gutterBottom
         >
           {APP_NAME_FULL}
         </Typography>
-        <Typography
-          style={styles.secondBrandLabel}
-          component="h4"
-          variant="h4"
-          gutterBottom
-        >
-          <IoIosCube />
-        </Typography>
+        <div style={{ marginLeft: '5px' }}>
+          <LogoIcon size="60" />
+        </div>
       </div>
       <div className="auth-container" style={{ height: '100%', width: '50%' }}>
         <div className="auth-form-container">
@@ -67,6 +61,7 @@ const Authentication = ({ history }) => {
               style={{ fontWeight: 'bold' }}
               variant="h4"
               gutterBottom
+              color="primary"
             >
               Bienvenido
             </Typography>
@@ -122,23 +117,15 @@ const Authentication = ({ history }) => {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <Mutation
-              mutation={LOGIN_MUTATION}
-              variables={{ email, password }}
-              onCompleted={data => confirm(data)}
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              style={{ marginLeft: 'auto', color: 'white' }}
+              onClick={login}
             >
-              {mutation => (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  size="large"
-                  style={{ marginLeft: 'auto', color: 'white' }}
-                  onClick={mutation}
-                >
-                  LOGIN
-                </Button>
-              )}
-            </Mutation>
+              LOGIN
+            </Button>
           </div>
           <div style={styles.termAndUseContainer}>
             <div style={styles.termAndUseLabel}>
@@ -161,9 +148,11 @@ const styles = {
     justifyContent: 'center'
   },
   brandLabel: {
-    fontFamily: 'Pacifico',
-    fontSize: '3rem',
-    fontWeight: 'normal'
+    fontFamily: 'Gruppo',
+    fontSize: '5rem',
+    fontWeight: 'bold',
+    color: '#898e90',
+    marginBottom: '0px'
   },
   secondBrandLabel: {
     marginLeft: '15px',

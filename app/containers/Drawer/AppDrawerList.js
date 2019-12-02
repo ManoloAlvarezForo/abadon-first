@@ -4,19 +4,13 @@ import PropTypes from 'prop-types';
 import ListItemWithIcon from './ListItemWithIcon';
 import { drawerAppIconList, drawerAppOptions } from './DrawerAppListUtil';
 
-const styles = {
-  fontSize: {
-    fontSize: '22px'
-  }
-};
-
 const AppDrawerList = ({ handleListItemClick, selectedItem }) => {
   const handleClick = option => {
     handleListItemClick(option);
   };
 
   return (
-    <React.Fragment>
+    <>
       {drawerAppOptions.map(option => (
         <ListItemWithIcon
           iconStyles={styles.fontSize}
@@ -29,8 +23,14 @@ const AppDrawerList = ({ handleListItemClick, selectedItem }) => {
           handleListItemClick={() => handleClick(option)}
         />
       ))}
-    </React.Fragment>
+    </>
   );
+};
+
+const styles = {
+  fontSize: {
+    fontSize: '22px'
+  }
 };
 
 AppDrawerList.propTypes = {

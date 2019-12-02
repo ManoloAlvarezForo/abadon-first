@@ -8,15 +8,8 @@ import AuthenticationPage from '../containers/AuthenticationPage/AuthenticationP
 
 // Containers.
 import HomePage from '../containers/HomePage/HomePage';
-// import ApplicantsPage from '../containers/ApplicantsPage/ApplicantsPage';
-// import TemplatePage from '../containers/TemplatePage/TemplatePage';
-// import SettingsPage from '../containers/SettingsPage/SettingsPage';
-// import TopicsPage from '../containers/TopicsPage/TopicsPage';
-// import ProfilePage from '../containers/ProfilePage/ProfilePage';
-// import UsersPage from '../containers/UsersPage/UsersPage';
 import SchedulerPage from '../containers/ScheluderPage/ScheluderPage';
-// import NotificationsPage from '../containers/NotificationPage/NotificationPage';
-// import SalesPage from '../containers/SalesPage/SalesPage';
+import SalesPage from '../containers/SalesPage/SalesPage';
 
 // Wrapper
 import DrawerWrapper from '../containers/Drawer/DrawerWrapper';
@@ -33,8 +26,8 @@ const Routes = () => {
       />
       <AuthRoute
         exact
-        path="/scheduler"
-        component={SchedulerPage}
+        path="/sales"
+        component={SalesPage}
         container={DrawerWrapper}
       />
       <AuthRoute component={Error404} />

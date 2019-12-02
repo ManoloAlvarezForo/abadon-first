@@ -4,16 +4,10 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { FiChevronLeft } from 'react-icons/fi';
 import { IoIosCube } from 'react-icons/io';
 import DrawerList from './DrawerList';
@@ -23,67 +17,67 @@ const DRAWER_WIDTH = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     marginLeft: DRAWER_WIDTH,
     width: `calc(100% - ${DRAWER_WIDTH}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 36,
+    marginRight: 36
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   drawer: {
     width: DRAWER_WIDTH,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: 'nowrap'
   },
   drawerOpen: {
     width: DRAWER_WIDTH,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: 'hidden',
     width: theme.spacing() * 7 + 1,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing() * 7 + 1,
-    },
+      width: theme.spacing() * 7 + 1
+    }
   },
   paperAnchorLeft: {
-    left: 'unset',
+    left: 'unset'
   },
   paper: {
     position: 'relative',
-    top: 'unset',
+    top: 'unset'
   },
   toolbar: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     // padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
+    ...theme.mixins.toolbar
+  }
 }));
 
 const MiniDrawer = ({ changeTitle }) => {
@@ -100,13 +94,13 @@ const MiniDrawer = ({ changeTitle }) => {
       variant="permanent"
       className={clsx(classes.drawer, {
         [classes.drawerOpen]: open,
-        [classes.drawerClose]: !open,
+        [classes.drawerClose]: !open
       })}
       classes={{
         paper: clsx({
           [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        }),
+          [classes.drawerClose]: !open
+        })
       }}
       open={open}
     >
@@ -121,7 +115,7 @@ const MiniDrawer = ({ changeTitle }) => {
                 display: 'flex',
                 flexDirection: 'row',
                 width: '100%',
-                justifyContent: 'center',
+                justifyContent: 'center'
               }}
             >
               {open ? (
@@ -130,14 +124,14 @@ const MiniDrawer = ({ changeTitle }) => {
                     justifyContent: 'center',
                     width: '100%',
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'center'
                   }}
                 >
                   <Typography
                     style={{
                       fontFamily: 'Pacifico',
                       fontSize: '1.8rem',
-                      fontWeight: 'normal',
+                      fontWeight: 'normal'
                     }}
                     component="h4"
                     variant="h4"
@@ -151,7 +145,7 @@ const MiniDrawer = ({ changeTitle }) => {
                       fontWeight: 'normal',
                       marginLeft: '15px',
                       marginBottom: 0,
-                      marginTop: '10px',
+                      marginTop: '10px'
                     }}
                     variant="h4"
                   >
@@ -168,14 +162,14 @@ const MiniDrawer = ({ changeTitle }) => {
                     style={{
                       textAlign: 'center',
                       display: 'flex',
-                      flexDirection: 'row',
+                      flexDirection: 'row'
                     }}
                   >
                     <Typography
                       style={{
                         color: '#e91e63',
                         fontSize: '2.5rem',
-                        marginTop: '10px',
+                        marginTop: '10px'
                       }}
                       variant="h4"
                     >
@@ -191,7 +185,7 @@ const MiniDrawer = ({ changeTitle }) => {
                   aria-label="Open drawer"
                   onClick={handleDrawer}
                   className={clsx({
-                    [classes.hide]: !open,
+                    [classes.hide]: !open
                   })}
                 >
                   <FiChevronLeft color="gray" />
@@ -208,11 +202,11 @@ const MiniDrawer = ({ changeTitle }) => {
 };
 
 MiniDrawer.propTypes = {
-  changeTitle: PropTypes.func,
+  changeTitle: PropTypes.func
 };
 
 MiniDrawer.defaultProps = {
-  changeTitle: () => {},
+  changeTitle: () => {}
 };
 
 export default MiniDrawer;

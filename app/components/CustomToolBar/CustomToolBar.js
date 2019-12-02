@@ -6,11 +6,15 @@ import PropTypes from 'prop-types';
 
 const CustomToolBar = ({ additionalComponent, title }) => {
   return (
-    <AppBar position="static" style={{ background: 'none' }}>
-      <Toolbar style={{ width: '100%' }}>
+    <AppBar position="static" style={{ background: '#414755' }}>
+      <Toolbar
+        style={{
+          width: '100%'
+        }}
+      >
         <Typography
           variant="h6"
-          style={{ color: 'white', width: '10%' }}
+          style={{ width: '10%', fontWeight: 600, color: '#d4d3d1' }}
           noWrap
         >
           {title}
@@ -22,8 +26,12 @@ const CustomToolBar = ({ additionalComponent, title }) => {
 };
 
 CustomToolBar.propTypes = {
-  additionalComponent: PropTypes.instanceOf(Object).isRequired,
+  additionalComponent: PropTypes.instanceOf(Object),
   title: PropTypes.string.isRequired
+};
+
+CustomToolBar.defaultProps = {
+  additionalComponent: undefined
 };
 
 export default CustomToolBar;

@@ -28,7 +28,7 @@ const PreachingContent = ({ setOpen }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <AppBar className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -58,7 +58,7 @@ const PreachingContent = ({ setOpen }) => {
           variant="outlined"
         />
       </form>
-    </React.Fragment>
+    </>
   );
 };
 

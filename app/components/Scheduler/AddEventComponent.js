@@ -155,7 +155,7 @@ const AddEventComponent = props => {
   }, [title, date, timeTo, timeFrom, participants, description]);
 
   return (
-    <React.Fragment>
+    <>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <TextField
@@ -235,7 +235,7 @@ const AddEventComponent = props => {
           />
         </div>
       </MuiPickersUtilsProvider>
-    </React.Fragment>
+    </>
   );
 };
 

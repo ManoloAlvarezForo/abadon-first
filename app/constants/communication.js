@@ -1,5 +1,5 @@
-// const URL_SERVER = 'http://localhost:4000/';
-const URL_SERVER = 'https://theocraticwall.herokuapp.com/';
+const URL_SERVER = 'http://localhost:4000/';
+// const URL_SERVER = 'https://theocraticwall.herokuapp.com/';
 const GRAPHQL = 'graphql';
 export const AUTH_TOKEN = 'auth-token';
 export const METHOD_POST = 'POST';

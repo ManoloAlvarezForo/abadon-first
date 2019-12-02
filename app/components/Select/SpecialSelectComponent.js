@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import {
   TextField,
   Paper,
@@ -41,12 +43,33 @@ ProductMenuItem.defaultProps = {
   selectedItemEvent: () => {}
 };
 
+const useStyles = makeStyles(() => ({
+  input: {
+    height: 45
+  },
+  selectRoot: {
+    height: 40,
+    display: 'table'
+    // display: "flex",
+    // justifyContent: "center",
+    // alignItems: "center",
+  },
+  select: {
+    height: 35,
+    paddingTop: 0,
+    paddingBottom: 0,
+    display: 'table-cell',
+    verticalAlign: 'middle'
+  }
+}));
+
 const SpecialSelectComponent = ({
   label,
   placeholder,
   addItems,
   suggestions: Suggestions
 }) => {
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [selectedTextField, setSelectedTextField] = useState('');
   const anchorEl = React.useRef(null);
@@ -69,18 +92,23 @@ const SpecialSelectComponent = ({
 
   return (
     <div
-      style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%'
+      }}
     >
       <TextField
         onChange={onChangeHandle}
         value={selectedTextField}
-        id="outlined-full-width"
         label={label}
-        style={{ margin: 5, width: 'auto' }}
         placeholder={placeholder}
         fullWidth
         margin="normal"
         variant="outlined"
+        InputProps={{
+          className: classes.input
+        }}
         InputLabelProps={{
           shrink: true
         }}

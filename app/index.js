@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
-import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
+// import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
 import './app.global.css';
 
 // Graphql
@@ -12,16 +12,18 @@ import {
   IntrospectionFragmentMatcher
 } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
-import App from './App';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import MomentUtils from '@date-io/moment';
 import { AUTH_TOKEN, GRAPHQL_URL } from './constants/communication';
 
 import introspectionQueryResultData from './fragmentTypes.json';
+import App from './App';
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
   introspectionQueryResultData
 });
 
-const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
+// const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
 const httpLink = createHttpLink({
   uri: GRAPHQL_URL
@@ -47,10 +49,16 @@ const client = new ApolloClient({
 });
 
 render(
-  <AppContainer>
-    <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
+    <MuiPickersUtilsProvider utils={MomentUtils}>
       <App />
-    </ApolloProvider>
-  </AppContainer>,
+    </MuiPickersUtilsProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
+
+// <AppContainer>
+//     <ApolloProvider client={client}>
+//       <App />
+//     </ApolloProvider>
+//   </AppContainer>,

@@ -5,7 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import PropTypes from 'prop-types';
 
-const UserProfileItem = ({ handleListItemClick, name, selectedItem }) => {
+const UserProfileItem = ({ handleListItemClick, selectedItem }) => {
   const [option] = useState({
     name: 'Profile',
     variant: 'profile',
@@ -19,6 +19,8 @@ const UserProfileItem = ({ handleListItemClick, name, selectedItem }) => {
     handleListItemClick(option);
   };
 
+  const userName = localStorage.getItem('userName');
+
   return (
     <ListItem
       selected={selectedItem === option.path}
@@ -27,9 +29,9 @@ const UserProfileItem = ({ handleListItemClick, name, selectedItem }) => {
       onClick={handleClick}
     >
       <ListItemAvatar>
-        <Avatar src="">U</Avatar>
+        <Avatar src="">{userName[0]}</Avatar>
       </ListItemAvatar>
-      <ListItemText primary={name} />
+      <ListItemText primary={userName} />
     </ListItem>
   );
 };
@@ -47,3 +49,4 @@ UserProfileItem.defaultProps = {
 };
 
 export default UserProfileItem;
+// style={{ color: '#d4d3d1' }}

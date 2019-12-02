@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 // Icons
-import { FiUsers, FiLogOut, FiCalendar } from 'react-icons/fi';
-import { MdNotificationsNone } from 'react-icons/md';
+import { FiCalendar } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import ListItemWithIcon from './ListItemWithIcon';
+import ShoppingCartIcon from '../../icons/shopping-cart';
+import LogoutIcon from '../../icons/logoutIcon';
 import { AUTH_TOKEN } from '../../constants/communication';
 
 const styles = {
@@ -13,17 +14,16 @@ const styles = {
 };
 
 const iconList = {
-  users: FiUsers,
   events: FiCalendar,
-  notifications: MdNotificationsNone,
-  logout: FiLogOut
+  sales: () => <ShoppingCartIcon size={24} color="#313640" />,
+  logout: () => <LogoutIcon size={24} color="#313640" />
 };
 
 const options = [
   {
-    name: 'Eventos',
-    variant: 'events',
-    path: '/scheduler'
+    name: 'Ventas',
+    variant: 'sales',
+    path: '/sales'
   },
   {
     name: 'Logout',
@@ -44,7 +44,7 @@ class UserDrawerList extends React.Component {
   render() {
     const { selectedItem } = this.props;
     return (
-      <React.Fragment>
+      <>
         {options.map(option => (
           <ListItemWithIcon
             iconStyles={styles.fontSize}
@@ -57,7 +57,7 @@ class UserDrawerList extends React.Component {
             handleListItemClick={() => this.handleClick(option)}
           />
         ))}
-      </React.Fragment>
+      </>
     );
   }
 }

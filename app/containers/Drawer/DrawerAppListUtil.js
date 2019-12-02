@@ -1,11 +1,8 @@
-import { FiHome } from 'react-icons/fi';
+import React from 'react';
+import HouseIcon from '../../icons/houseIcon';
 
 export const drawerAppIconList = {
-  home: FiHome
-  // applicants: FiUserCheck,
-  // sales: FiShoppingCart
-  // template: FiClipboard,
-  // topics: FiList
+  home: () => <HouseIcon size={24} color="#313640" />
 };
 
 /**

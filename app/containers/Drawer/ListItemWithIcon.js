@@ -49,3 +49,4 @@ ListItemWithIcon.defaultProps = {
 };
 
 export default ListItemWithIcon;
+// style={{ color: '#d4d3d1' }}
